@@ -43,12 +43,13 @@ export const Phishing = () => {
   }
 
   const getIcon = (name: string) => {
+    name = name.toLowerCase();
     switch (name) {
-      case 'Facebook':
+      case 'facebook':
         return <ImFacebook size={50} color='#4B6CD7' />;
-      case 'LinkedIn':
+      case 'linkedin':
         return <ImLinkedin size={50} color='#0A66C2' />;
-      case 'Twitter':
+      case 'twitter':
         return <ImTwitter size={50} color='#1DA1F2' />;
       default:
         return <FaCircleQuestion size={50} color='303030' />;
@@ -88,8 +89,8 @@ export const Phishing = () => {
             let password;
             try {
               details = JSON.parse(event.details);
-              site = details.payload.name[0];
-              mail = details.payload.email[0];
+              site = campaignData.name; 
+              mail = details.payload.email[0]; 
               password = details.payload.password[0];
             } catch (e) {
               console.error('Error parsing JSON:', e);
@@ -100,8 +101,8 @@ export const Phishing = () => {
               <div key={index} className="p-4 border rounded bg-white w-full">
                 <p>Mail : {JSON.stringify(mail)}</p>
                 <p>Password : {JSON.stringify(password)}</p>
-                <a href={`https://${site}"`} target="_blank" rel="noopener noreferrer">
-                  <button className="btn w-full mt-3">Accéder à Facebook</button>
+                <a href={`https://www.${site}.com`} target="_blank" rel="noopener noreferrer">
+                  <button className="btn w-full mt-3">Accéder à {site}</button>
                 </a>
               </div>
             );

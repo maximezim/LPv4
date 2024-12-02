@@ -5,8 +5,6 @@ import { Toaster } from "@/components/ui/toaster"
 import './index.css'
 
 createRoot(document.getElementById('root')!).render(
-  <StrictMode>
     <App />
-    <Toaster />
-  </StrictMode>,
+  ,
 )
