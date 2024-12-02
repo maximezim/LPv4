@@ -35,7 +35,7 @@ function App() {
 
               <ButtonNav titre="OSINT" description='Vérifier sur quelles sites une adresse mail est utilisée' handlePageChange={()=>{handlePageChange("osint")}} />
               <ButtonNav titre="PHISHING" description='Visualiser les informations récupérées par formulaire' handlePageChange={()=>{handlePageChange("phishing")}}/>
-              <ButtonNav titre="ANALYSE" description='Analyse les informations recupérées et les conséquences associées' handlePageChange={()=>{handlePageChange("analyse")}}/>
+              
             </div>
           </>
           )
@@ -63,14 +63,7 @@ function App() {
           )
         }
 
-        { page === "analyse" && (
-          <>
-           <IoArrowBackCircle size={40} className='text-2xl cursor-pointer absolute top-4 left-4' onClick={()=>{handlePageChange("home")}}/>
-            <h1 className="text-4xl font-bold mb-4">ANALYSE</h1>
-            <Separator className='mb-8 mt-8'/>
-          </>
-          )
-        }
+
 
         </div>
       </div>
