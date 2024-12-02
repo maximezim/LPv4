@@ -31,26 +31,40 @@ services:
     image: roundcube/roundcubemail:latest
     container_name: webmail
     environment:
-    - ROUNDCUBEMAIL_DEFAULT_HOST=mailserver
-    - ROUNDCUBEMAIL_DEFAULT_PORT=143
-    - ROUNDCUBEMAIL_SMTP_SERVER=mailserver
-    - ROUNDCUBEMAIL_SMTP_PORT=587
-    - ROUNDCUBEMAIL_DEFAULT_USE_TLS=false
-    - ROUNDCUBEMAIL_DEFAULT_USE_SSL=false
-    - ROUNDCUBEMAIL_SMTP_USER=%u
-    - ROUNDCUBEMAIL_SMTP_PASS=%p
-
+      - ROUNDCUBEMAIL_DEFAULT_HOST=mailserver
+      - ROUNDCUBEMAIL_DEFAULT_PORT=143
+      - ROUNDCUBEMAIL_SMTP_SERVER=mailserver
+      - ROUNDCUBEMAIL_SMTP_PORT=587
+      - ROUNDCUBEMAIL_DEFAULT_USE_TLS=false
+      - ROUNDCUBEMAIL_DEFAULT_USE_SSL=false
+      - ROUNDCUBEMAIL_SMTP_USER=%u
+      - ROUNDCUBEMAIL_SMTP_PASS=%p
     ports:
       - "80:80"
     depends_on:
       - mailserver
     restart: unless-stopped
     volumes:
-    - webmail_data:/var/www/html
-    - ./roundcube/config/config.inc.php:/var/www/html/config/config.inc.php
+      - webmail_data:/var/www/html
+      - ./roundcube/config/config.inc.php:/var/www/html/config/config.inc.php
+
+  gophish:
+    image: gophish/gophish:latest
+    container_name: gophish
+    volumes:
+      - gophish-data:/opt/gophish
+      - ./gophish/config.json:/opt/gophish/config.json
+    ports:
+      - "3333:3333"
+      - "8080:80"
+    depends_on:
+      - mailserver
+    restart: unless-stopped
+
 
 volumes:
   maildata:
   mailstate:
   maillogs:
   webmail_data:
+  gophish-data:
