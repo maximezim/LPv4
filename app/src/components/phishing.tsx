@@ -7,14 +7,14 @@ import { ImTwitter } from "react-icons/im";
 import { FaCircleQuestion } from "react-icons/fa6";
 
 export const Phishing = () => {
-  const [campaigns] = useState<any[]>([]);
+  const [campaigns, setCampaigns] = useState<any[]>([]);
   const [campaignData, setCampaignData] = useState<any>({});
 
   useEffect(() => {
-    //getAllCampaigns();
+    getAllCampaigns();
   }, []);
 
-  /*const getAllCampaigns = async () => {
+  const getAllCampaigns = async () => {
     try {
       const data = await gophishService.getCampainData();
       setCampaigns(data);
@@ -22,7 +22,7 @@ export const Phishing = () => {
     } catch (error) {
       console.error('Error fetching campaigns:', error);
     }
-  }*/
+  }
 
   const getCampaignData = async (id: number) => {
     try {
@@ -75,16 +75,20 @@ export const Phishing = () => {
           ))
         }
         </div>
+
         <Separator className='mb-8 mt-8' />
+        
         <div className="grid grid-cols-3 gap-4">
           {campaignData.timeline?.map((event: any, index: number) => {
             if (event.message !== "Submitted Data") return null;
 
             let details;
+            let site;
             let mail;
-            let password
+            let password;
             try {
               details = JSON.parse(event.details);
+              site = details.payload.name[0];
               mail = details.payload.email[0];
               password = details.payload.password[0];
             } catch (e) {
@@ -96,7 +100,7 @@ export const Phishing = () => {
               <div key={index} className="p-4 border rounded bg-white w-full">
                 <p>Mail : {JSON.stringify(mail)}</p>
                 <p>Password : {JSON.stringify(password)}</p>
-                <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
+                <a href={`https://${site}"`} target="_blank" rel="noopener noreferrer">
                   <button className="btn w-full mt-3">Accéder à Facebook</button>
                 </a>
               </div>
