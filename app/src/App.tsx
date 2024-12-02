@@ -8,6 +8,7 @@ import { ButtonNav } from './components/button_nav';
 import { IoArrowBackCircle } from "react-icons/io5";
 
 import { Phishing } from './components/phishing';
+import HoleheChecker from './components/holehe_component';
 
 
 function App() {
@@ -48,7 +49,7 @@ function App() {
             <Separator className='mb-8 mt-8'/>
             
             <div className='mt-8 w-full h-96 bg-slate-50 rounded-sm shadow'>
-              
+              <HoleheChecker />
             </div>
           </>
           )
