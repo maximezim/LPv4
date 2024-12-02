@@ -76,7 +76,7 @@ export const Phishing = () => {
         }
         </div>
         <Separator className='mb-8 mt-8' />
-        
+        <div className="grid grid-cols-3 gap-4">
           {campaignData.timeline?.map((event: any, index: number) => {
             if (event.message !== "Submitted Data") return null;
 
@@ -93,54 +93,18 @@ export const Phishing = () => {
             }
 
             return (
-              <div key={index} className="p-4 border rounded bg-white">
-                <p>Message: {event.message}</p>
-                <p>Email: {event.email}</p>
-                  <p>Mail : {JSON.stringify(mail)}</p>
-                  <p>Password : {JSON.stringify(password)}</p>
+              <div key={index} className="p-4 border rounded bg-white w-full">
+                <p>Mail : {JSON.stringify(mail)}</p>
+                <p>Password : {JSON.stringify(password)}</p>
+                <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
+                  <button className="btn w-full mt-3">Accéder à Facebook</button>
+                </a>
               </div>
             );
           })
           }
+          </div>
          
-         <div className="grid grid-cols-3 gap-4">
-          <div className="p-4 border rounded bg-white w-full">
-              <p>Mail : mailici@mail.mail</p>
-              <p>Password : belbit</p>
-              <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
-                <button className="btn w-full mt-3">Accéder à Facebook</button>
-              </a>
-          </div>
-          <div className="p-4 border rounded bg-white w-full">
-              <p>Mail : mailici@mail.mail</p>
-              <p>Password : belbit</p>
-              <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
-                <button className="btn w-full mt-3">Accéder à Facebook</button>
-              </a>
-          </div>
-          <div className="p-4 border rounded bg-white w-full">
-              <p>Mail : mailici@mail.mail</p>
-              <p>Password : belbit</p>
-              <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
-                <button className="btn w-full mt-3">Accéder à Facebook</button>
-              </a>
-          </div>
-          <div className="p-4 border rounded bg-white w-full">
-              <p>Mail : mailici@mail.mail</p>
-              <p>Password : belbit</p>
-              <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
-                <button className="btn w-full mt-3">Accéder à Facebook</button>
-              </a>
-          </div>
-          <div className="p-4 border rounded bg-white w-full">
-              <p>Mail : mailici@mail.mail</p>
-              <p>Password : belbit</p>
-              <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
-                <button className="btn w-full mt-3">Accéder à Facebook</button>
-              </a>
-          </div>
-        </div>
-  
       
         
     </>
