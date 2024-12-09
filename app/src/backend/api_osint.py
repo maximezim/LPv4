@@ -9,7 +9,7 @@ app = FastAPI()
 # Configurer CORS pour permettre les requêtes depuis React
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Remplacez par l'URL de votre frontend pour plus de sécurité
+    allow_origins=["*"],  
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -25,11 +25,18 @@ async def check_email(request: EmailRequest):
         raise HTTPException(status_code=400, detail="Email is required")
 
     try:
-        # Exécute Holehe via subprocess
-        result = subprocess.check_output(['holehe', email, '--only-used'], text=True)
-        print(result)
-        return {"success": True, "data": result}
+        # Exécuter Holehe
+        holehe_result = subprocess.check_output(
+            ['holehe', email, '--only-used'], text=True
+        )
+
+        # Retourner les résultats combinés
+        return {
+            "success": True,
+            "holehe_data": holehe_result,
+        }
+        
     except subprocess.CalledProcessError as e:
-        raise HTTPException(status_code=500, detail=f"Error running Holehe: {str(e)}")
+        raise HTTPException(status_code=500, detail=f"Error running command: {str(e)}")
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Unexpected error: {str(e)}")
