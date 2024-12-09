@@ -115,7 +115,7 @@ const OSINTChecker = () => {
           {username && (
             <div className="space-y-4">
               <a
-                href={`https://www.facebook.com/public/${username}`}
+                href={`https://www.facebook.com/search/people/?q=${username}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center space-x-2"
@@ -124,7 +124,7 @@ const OSINTChecker = () => {
                 <span>Facebook</span>
               </a>
               <a
-                href={`https://www.instagram.com/search/user?q=${username}`}
+                href={`https://www.instagram.com`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center space-x-2"
@@ -142,7 +142,7 @@ const OSINTChecker = () => {
                 <span>TikTok</span>
               </a>
               <a
-                href={`https://twitter.com/${username}`}
+                href={`https://x.com/search?q=${username}&src=typed_query&f=user`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center space-x-2"
