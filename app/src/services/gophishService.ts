@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:3333/api';
-const API_KEY = '997c5b79b4811951481bf9dba79840c729d9b77dc3cd88bd76c0eded73f44392';
+const API_URL = process.env.REACT_APP_API_URL;
+const API_KEY = process.env.REACT_APP_API_KEY;
 
 const gophishService = {
 
